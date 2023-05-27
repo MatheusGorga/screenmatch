@@ -1,41 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forumario de filmes</title>
+    <title>Lista de filmes</title>
 </head>
 
 <body>
     <h1>
-        Cadastro de Filme
+        Lista de filmes
     </h1>
 
-    <form method="post">
-        <label for="nome">Nome:</label>
-        <input id="nome" name="nome">
 
-        <br/>
-
-        <label for="duracao">Duração (em minutos):</label>
-        <input id="duracao" name="duracao">
-
-        <br/>
-
-        <label for="ano">Ano de lançamento:</label>
-        <input id="ano" name="ano">
-
-        <br/>
-
-        <label for="genero">Gênero:</label>
-        <input id="genero" name="genero">
-
-        <br/>
-
-        <input type="submit" value="Cadastrar">
-    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>NOME</th>
+                <th>DURAÇÃO</th>
+                <th>ANO DE LANÇAMENTO</th>
+                <th>GÊNERO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="filme : ${lista}">
+                <td th:text="${filme.nome}"></td>
+                <td th:text="${filme.duracaoEmMinutos}"></td>
+                <td th:text="${filme.anoLancamento}"></td>
+                <td th:text="${filme.genero}"></td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 
