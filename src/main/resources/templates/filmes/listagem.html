@@ -10,11 +10,11 @@
 
     <div layout:fragment="conteudo">
 
-        
+
         <h1>
             Lista de filmes
         </h1>
-        
+
         <a href="/filmes/formulario">Novo</a>
 
         <table>
@@ -24,6 +24,7 @@
                     <th>DURAÇÃO</th>
                     <th>ANO DE LANÇAMENTO</th>
                     <th>GÊNERO</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +33,16 @@
                     <td th:text="${filme.duracaoEmMinutos}"></td>
                     <td th:text="${filme.anoLancamento}"></td>
                     <td th:text="${filme.genero}"></td>
+                    <td>
+                        <a th:href="@{/filmes/formulario?id={id}(id=${filme.id})}">Editar</a>
+                        <form action="/filmes" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${filme.id}">
+                            <input type="submit" value="Excluir">
+                        </form>
+                    </td>
+
+
                 </tr>
             </tbody>
         </table>
